@@ -10,6 +10,8 @@ import {FormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
+import {MatTableModule} from "@angular/material/table"
+
 import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component'
 
@@ -28,7 +30,8 @@ import { OrdersComponent } from './orders/orders.component'
     FormsModule,
     AppRoutingModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

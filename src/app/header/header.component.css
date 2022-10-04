@@ -3,6 +3,9 @@ nav{
     align-items: center;
     justify-content: space-between;
     background-color: rgb(219, 60, 49);
+    position: sticky;
+    top: 0;
+    width: 100%;
 }
 div{
     display: flex;

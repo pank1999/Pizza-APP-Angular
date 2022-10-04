@@ -1,0 +1,19 @@
+table{
+    width:100%;
+}
+td,th{
+    text-align: center;
+}
+.ing{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+.ing:last-child{
+    border-bottom: none;
+}
+.ing img{
+    border-radius: 100%;
+}
