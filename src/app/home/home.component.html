@@ -1,0 +1,16 @@
+<div class="main-container" >
+    <div class="left" >
+        <img src="https://imgs.search.brave.com/9hA-7744crG1de3P1w5I3v-xar0cG0nYqipYIJPsjYA/rs:fit:1200:1100:1/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvcHJl/dmlld3MvMDAwLzYx/NS8wMTkvb3JpZ2lu/YWwvdmVjdG9yLWNh/cnRvb24tc21pbGlu/Zy1jaGVmLWNoYXJh/Y3Rlci5qcGc" alt="left-img">
+    </div>
+    <div class="right" >
+        <h1>Customize your Pizza According to your Taste !</h1>
+        <button class="btn" >Get Started</button>
+    </div>
+</div>
+<div class="Crad-container" >
+    <mat-card *ngFor="let item of Ingredients" class="card-item" [style.backgroundColor]="item.isSelected?'red':'white'"  (click)="selectIngredient(item.id)" >
+        <img  src={{item.img}} alt="" >
+        <p>{{item.Name}}</p>
+        <p>RS-{{item.price}}</p>
+    </mat-card>
+</div>

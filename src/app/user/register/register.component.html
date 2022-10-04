@@ -1,0 +1,24 @@
+<div class="login" >
+    <h1>Login</h1>
+    <form  #form="ngForm" (ngSubmit)="getData(form)" >
+        <div>
+            <label for="">Name</label>
+            <input type="text" ngModel name="name">
+        </div>
+        <div>
+            <label for="">Mobile Number</label>
+            <input type="number" ngModel name="mobileNumber">
+        </div>
+        <div>
+            <label for="">Email</label>
+            <input type="text" ngModel name="email">
+        </div>
+        <div>
+            <label for="">Password</label>
+            <input type="password" ngModel  name="password">
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+</div>

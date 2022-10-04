@@ -1,0 +1,48 @@
+.main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.left img{
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+.right{
+    padding: 0px 50px;
+}
+.right h1{
+    font-family: sans-serif;
+    font-size: 40px;
+}
+.btn{
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 20px;
+    border-radius: 70px;
+    padding:20px 50px;
+    cursor: pointer;
+    margin-left: 50%;
+}
+.btn:hover{
+  background-color: rgb(216, 37, 30);
+ 
+}
+
+.Crad-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 50px;
+}
+.card-item{
+    border-radius: 10px;
+}
+.card-item img{
+    height: 200px;
+    width: 200px;
+}
+.card-item p{
+    text-align: center;
+}

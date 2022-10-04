@@ -1,0 +1,31 @@
+nav{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(219, 60, 49);
+}
+div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div img{
+    height: 70px;
+    width: 70px;
+    border-radius: 100%;
+}
+div span{
+    font-size: 20px;
+    color: white;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    display: inline-block;
+    margin-right:20px;
+}
+li a{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
