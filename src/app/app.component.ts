@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'client';
+  userLoggedIn=true;
+
+  toggelUserLoggedIn(val:boolean){
+       this.userLoggedIn=val;
+  }
 }
 

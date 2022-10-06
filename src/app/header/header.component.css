@@ -32,3 +32,11 @@ li a{
     text-decoration: none;
     color: rgb(255, 255, 255);
 }
+.logout{
+   padding: 10px 15px;
+   border-radius: 7px;
+   background-color: white;
+   color: red;
+   border: none;
+   cursor: pointer;
+}

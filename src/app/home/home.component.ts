@@ -32,4 +32,14 @@ export class HomeComponent implements OnInit {
      });
     
   }
+
+  quantity=0;
+  setQuantity(val:string){
+       if(val==="add"){
+          this.quantity+=1;
+       }
+       else{
+          this.quantity-=1;
+       }
+  }
 }

@@ -35,9 +35,20 @@
     align-items: center;
     justify-content: space-around;
     padding: 50px;
+    flex-wrap: wrap;
 }
 .card-item{
     border-radius: 10px;
+    margin-bottom: 30px;
+}
+.quantity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.quantity span{
+    font-size: 25px;
+    padding: 10px;
 }
 .card-item img{
     height: 200px;
