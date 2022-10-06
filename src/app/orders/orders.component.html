@@ -8,25 +8,34 @@
     <!-- Position Column -->
     <ng-container matColumnDef="position">
       <th mat-header-cell *matHeaderCellDef> Order ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Items</th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let element">
+          <div *ngFor="let item of element.items">
+              <div *ngFor="let ing of item.pizza" style="display: flex; align-items:center;justify-content:space-around; padding: 5px;" >
+                <span>{{ing.Name}}</span> 
+                <span>rs-{{ing.price}}</span>
+                <img src={{ing.img}}  alt=""  style="height: 30px; width:30px;border-radius: 50%;" >
+              </div>
+              <hr>
+          </div>  
+      </td>
     </ng-container>
   
     <!-- Weight Column -->
     <ng-container matColumnDef="weight">
       <th mat-header-cell *matHeaderCellDef> Total Price </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.totalPrice}} </td>
     </ng-container>
   
     <!-- Symbol Column -->
     <ng-container matColumnDef="symbol">
       <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <td mat-cell *matCellDef="let element"> Success </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -12,7 +12,7 @@ export class UserService {
      this.http.post(this.Base_url,user);
   }
 
-  getUser(){
-     this.http.get(this.Base_url);
+  getUser(user:any){
+     this.http.get(`${this.Base_url}/${user}`);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {useerType} from "../../models/user";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,7 +9,7 @@ export class RegisterComponent implements OnInit {
 
   constructor() { }
 
-  userRegistrationData:{name:string,mobileNumber:number,email:string,password:string} ={
+  userRegistrationData:useerType ={
     name:'',
     mobileNumber:0,
     email:"",
