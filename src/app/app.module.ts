@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import {UserModule} from "./user/user.module";
 import {FormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
+import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table"
@@ -28,6 +29,7 @@ import { OrdersComponent } from './orders/orders.component'
     BrowserAnimationsModule,
     UserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     MatCardModule,
     MatIconModule,
