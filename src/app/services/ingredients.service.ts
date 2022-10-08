@@ -51,21 +51,7 @@ export class IngredientsService {
    price:200,
    Name:"Ing6",
    isSelected:false,
-},
-{
- id:7,
- img:"https://imgs.search.brave.com/J10uAlU6uKOFD-5CPIbshJvUfwv7JarAGtmgpmFEdNU/rs:fit:1096:1111:1/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGl6emEvcGl6/emFfUE5HNzE1MS5w/bmc",
- price:300,
- Name:"Ing7",
- isSelected:false,
-},
-{
- id:8,
- img:"https://imgs.search.brave.com/J10uAlU6uKOFD-5CPIbshJvUfwv7JarAGtmgpmFEdNU/rs:fit:1096:1111:1/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGl6emEvcGl6/emFfUE5HNzE1MS5w/bmc",
- price:600,
- Name:"Ing8",
- isSelected:false,
-}
+ }
   ]
 
   getIngredients(){

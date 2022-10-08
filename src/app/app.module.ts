@@ -12,9 +12,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {MatCardModule} from "@angular/material/card";
 import {MatIconModule} from "@angular/material/icon";
 import {MatTableModule} from "@angular/material/table"
+import {MatBadgeModule} from "@angular/material/badge"
 
 import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component'
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { OrdersComponent } from './orders/orders.component'
     AppRoutingModule,
     MatCardModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatBadgeModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

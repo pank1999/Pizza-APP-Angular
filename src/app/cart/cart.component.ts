@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 
 export interface IngredientType{
@@ -21,14 +22,19 @@ export interface pizzaType{
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService:CartService) { }
+  constructor(private cartService:CartService,private router: Router){ }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','action'];
   dataSource:pizzaType[]=[];
 
   ngOnInit(): void {
     this.dataSource=this.cartService.getUserCart(2);
     console.log(this.dataSource);
+  }
+
+  checkout(){
+      console.log("checkout called");
+      this.router.navigate(["/orders",{oderItem:2}]);
   }
 
 }

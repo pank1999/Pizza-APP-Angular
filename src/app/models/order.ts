@@ -8,6 +8,7 @@ import {IngredientType} from "../models/Ingredient";
      id:number,
      userId:number,
      totalPrice:number,
-     items:itemType[]
+     items:itemType[],
+     status:string,
   }
   

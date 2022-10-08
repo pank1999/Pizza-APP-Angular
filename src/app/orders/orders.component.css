@@ -1,3 +1,17 @@
 table{
     width:100%;
+    text-align: center;
+}
+td,th{
+    text-align: center;
+}
+.pizza-item-container{
+    display: flex; align-items:center;justify-content:space-around; padding: 5px;
+   
+}
+.item-container{
+    border:1px solid rgb(199, 199, 199);
+}
+.item-container:last-child{
+    border-bottom: none;
 }

@@ -1,8 +1,22 @@
 table{
+    flex: 2;
     width:100%;
+    border-radius: 10px;
 }
 td,th{
     text-align: center;
+}
+.cart-heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.cart-heading a{
+    text-decoration: none;
+    color: rgb(255, 174, 0);
+}
+h2{
+    padding:30px;
 }
 .ing{
     display: flex;
@@ -16,4 +30,48 @@ td,th{
 }
 .ing img{
     border-radius: 100%;
+}
+
+.container{
+    display:flex;
+    justify-content: space-between;
+    padding:0px 30px;
+    
+}
+.checkout-card{
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 10px;   
+    margin-left: 50px; 
+    flex: 1;
+}
+.checkout-card div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(177, 130, 2);
+}
+.checkout-card div:last-child{
+    border: none;
+}
+.checkout-card ul{
+    list-style-type: none;
+
+}
+ul li{
+    margin-top: 10px;
+    border-bottom: 1px solid gray;
+    font-size: 14px;
+    padding: 5px;
+}
+.checkout-card button{
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    background-color: rgb(241, 169, 13);
+    color: black;
+    font-size: 18px;
+    margin-top: 30px;
+    cursor:pointer;
 }

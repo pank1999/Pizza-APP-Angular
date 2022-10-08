@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'client';
   userLoggedIn=true;
-
+  cSize=5;
   toggelUserLoggedIn(val:boolean){
        this.userLoggedIn=val;
   }

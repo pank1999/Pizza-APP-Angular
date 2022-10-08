@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IngredientType } from '../models/Ingredient';
 import { IngredientsService } from '../services/ingredients.service';
 
@@ -12,7 +13,7 @@ import { IngredientsService } from '../services/ingredients.service';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private ingredientService:IngredientsService) { }
+  constructor(private ingredientService:IngredientsService,private route:Router) { }
   
   Ingredients:IngredientType[]=[];
 
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
    this.Ingredients= this.ingredientService.getIngredients();
   }
 
-  bgcolor="white";
+  bgcolor="black";
   selectIngredient(id:number){
      this.Ingredients.map((item)=>{
         if(item.id===id){
@@ -41,5 +42,9 @@ export class HomeComponent implements OnInit {
        else{
           this.quantity-=1;
        }
+  }
+
+  AddToCart(){
+      this.route.navigate(["/cart",this.selectedIngredient]);
   }
 }

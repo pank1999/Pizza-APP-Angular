@@ -40,6 +40,7 @@
 .card-item{
     border-radius: 10px;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 .quantity{
     display: flex;
@@ -51,9 +52,26 @@
     padding: 10px;
 }
 .card-item img{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 }
 .card-item p{
     text-align: center;
+}
+
+.AddToCartBtnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.addToCartBtn{
+    background-color: rgb(212, 18, 18);
+    color: white;
+    border: none;
+    font-size: 20px;
+    border-radius: 70px;
+    padding:20px 50px;
+    cursor: pointer;
 }

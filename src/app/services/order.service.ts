@@ -15,7 +15,7 @@ export class OrderService {
     {
       id:1,
       userId:2,
-      totalPrice:300,
+      totalPrice:600,
       items:[
         {
           pizza:[
@@ -53,7 +53,8 @@ export class OrderService {
            }
           ]
         }
-      ]
+      ],
+      status:"Delivered"
     },
     {
       id:2,
@@ -78,7 +79,8 @@ export class OrderService {
            }
           ]
         }
-      ]
+      ],
+      status:"On The Way"
     }
   ]
   

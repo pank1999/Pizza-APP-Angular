@@ -11,7 +11,12 @@
     </ul>
     <ng-template #elseBlock >
         <ul>
-            <li><a  routerLink="''" routerLinkActive="active"  >Home</a></li>
+            <li><a  routerLink="" routerLinkActive="active"  >Home</a></li>
+            <li> 
+                <a routerLink="/cart" style="margin-top:10px ;">
+                      <mat-icon matBadge={{cartSize}} matBadgeColor="primary">shopping_cart</mat-icon>
+                 </a>
+            </li>   
             <li> <button class="logout" (click)="logout()" >Logout</button> </li>
         </ul>
     </ng-template>
