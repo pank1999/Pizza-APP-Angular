@@ -10,7 +10,7 @@
 <div class="Crad-container" >
     <mat-card *ngFor="let item of Ingredients" class="card-item"  (click)="selectIngredient(item.id)" >
         <img  src={{item.img}} alt="" >
-        <p>{{item.Name}}</p>
+        <p>{{item.name}}</p>
         <p>RS-{{item.price}}</p>
         <p><mat-icon  [style.color]="item.isSelected?'green':'black'" style="font-size: 30px; height: 40px;width: 50px;" >add_circle</mat-icon></p>
         

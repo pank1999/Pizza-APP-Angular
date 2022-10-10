@@ -1,6 +1,6 @@
 export interface IngredientType{
     id:number,
-    Name:string,
+    name:string,
     price:number,
     img:string,
     isSelected:boolean

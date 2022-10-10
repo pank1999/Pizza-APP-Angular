@@ -23,14 +23,14 @@ export class OrderService {
               id:1,
               img:"https://imgs.search.brave.com/J10uAlU6uKOFD-5CPIbshJvUfwv7JarAGtmgpmFEdNU/rs:fit:1096:1111:1/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGl6emEvcGl6/emFfUE5HNzE1MS5w/bmc",
               price:100,
-              Name:"Ing1",
+              name:"Ing1",
               isSelected:true,
             },
             {
               id:2,
               img:"https://imgs.search.brave.com/J10uAlU6uKOFD-5CPIbshJvUfwv7JarAGtmgpmFEdNU/rs:fit:1096:1111:1/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGl6emEvcGl6/emFfUE5HNzE1MS5w/bmc",
               price:200,
-              Name:"Ing2",
+              name:"Ing2",
               isSelected:true,
            }
           ]
@@ -41,14 +41,14 @@ export class OrderService {
               id:4,
               img:"https://imgs.search.brave.com/J10uAlU6uKOFD-5CPIbshJvUfwv7JarAGtmgpmFEdNU/rs:fit:1096:1111:1/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGl6emEvcGl6/emFfUE5HNzE1MS5w/bmc",
               price:100,
-              Name:"Ing1",
+              name:"Ing1",
               isSelected:true,
             },
             {
               id:3,
               img:"https://imgs.search.brave.com/J10uAlU6uKOFD-5CPIbshJvUfwv7JarAGtmgpmFEdNU/rs:fit:1096:1111:1/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGl6emEvcGl6/emFfUE5HNzE1MS5w/bmc",
               price:200,
-              Name:"Ing2",
+              name:"Ing2",
               isSelected:true,
            }
           ]
@@ -67,14 +67,14 @@ export class OrderService {
               id:1,
               img:"https://imgs.search.brave.com/J10uAlU6uKOFD-5CPIbshJvUfwv7JarAGtmgpmFEdNU/rs:fit:1096:1111:1/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGl6emEvcGl6/emFfUE5HNzE1MS5w/bmc",
               price:300,
-              Name:"Ing1",
+              name:"Ing1",
               isSelected:true,
             },
             {
               id:2,
               img:"https://imgs.search.brave.com/J10uAlU6uKOFD-5CPIbshJvUfwv7JarAGtmgpmFEdNU/rs:fit:1096:1111:1/g:ce/aHR0cHM6Ly9wbmdp/bWcuY29tL3VwbG9h/ZHMvcGl6emEvcGl6/emFfUE5HNzE1MS5w/bmc",
               price:200,
-              Name:"Ing2",
+              name:"Ing2",
               isSelected:true,
            }
           ]

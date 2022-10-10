@@ -4,7 +4,6 @@ import { IngredientType } from '../models/Ingredient';
 import { IngredientsService } from '../services/ingredients.service';
 
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,17 +14,19 @@ export class HomeComponent implements OnInit {
 
   constructor(private ingredientService:IngredientsService,private route:Router) { }
   
-  Ingredients:IngredientType[]=[];
+   Ingredients:IngredientType[]=[];
 
+    //Ingredients:any;
   selectedIngredient:number[]=[];
 
   ngOnInit(): void {
-   this.Ingredients= this.ingredientService.getIngredients();
+   this.Ingredients = this.ingredientService.getIngredients();
+   //console.log(this.Ingredients);
   }
 
   bgcolor="black";
   selectIngredient(id:number){
-     this.Ingredients.map((item)=>{
+     this.Ingredients.map((item:any)=>{
         if(item.id===id){
           item.isSelected=!item.isSelected;
           item.isSelected? this.selectedIngredient.push(item.id): this.selectedIngredient.pop();

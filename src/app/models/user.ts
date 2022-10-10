@@ -1,6 +1,6 @@
 export interface useerType {
     name: string, 
-    mobileNumber: number,
+    mobileNumber: string,
     email: string, 
     password: string
 }

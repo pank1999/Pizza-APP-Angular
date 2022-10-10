@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import {useerType} from "../../models/user";
 @Component({
   selector: 'app-register',
@@ -7,11 +8,11 @@ import {useerType} from "../../models/user";
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   userRegistrationData:useerType ={
     name:'',
-    mobileNumber:0,
+    mobileNumber:"",
     email:"",
     password:''
   }
@@ -22,5 +23,8 @@ export class RegisterComponent implements OnInit {
   getData(data:any){
       console.log(data.value);
       this.userRegistrationData=data.value;
+      this.userService.addUser(this.userRegistrationData);
+
   }
+  
 }

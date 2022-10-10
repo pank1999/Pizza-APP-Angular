@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,20 @@ import {NgForm} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-  userData:{email:string,password:string}={
-    email:'',
-    password:''
-  };
+  constructor(private userService:UserService) { }
+  // userData:{email:string,password:string}={
+  //   email:'',
+  //   password:''
+  // };
 
 
   ngOnInit(): void {
   }
-  getData(data:NgForm){
+
+  getUser(data:NgForm){
     console.log(data.value);
-    this.userData=data.value;
+    // this.userData=data.value;
+    this.userService.loginUser(data.value);
   }
 
 }
