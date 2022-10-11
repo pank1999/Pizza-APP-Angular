@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, toArray } from 'rxjs';
 import { CartService } from '../services/cart.service';
 
 export interface IngredientType{
@@ -25,11 +26,20 @@ export class CartComponent implements OnInit {
   constructor(private cartService:CartService,private router: Router){ }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','action'];
-  dataSource:pizzaType[]=[];
+  dataSource$!:Observable<any>;
+  totalPrice:number=0;
 
+ 
   ngOnInit(): void {
-    this.dataSource=this.cartService.getUserCart(2);
-    console.log(this.dataSource);
+    this.dataSource$ = this.cartService.getUserCart(1);
+    this.dataSource$.subscribe((res)=>{
+         res.forEach((element:any) => {
+             element.IngArray.forEach( (ing:any) => {
+               this.totalPrice+=ing.price;
+             });
+         });
+  
+    })
   }
 
   checkout(){
