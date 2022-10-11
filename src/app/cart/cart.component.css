@@ -58,12 +58,12 @@ h2{
     list-style-type: none;
 
 }
-ul li{
+/* ul li{
     margin-top: 10px;
     border-bottom: 1px solid gray;
     font-size: 14px;
     padding: 5px;
-}
+} */
 .checkout-card button{
     padding: 10px;
     border: none;

@@ -1,5 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, Subscription, toArray } from 'rxjs';
 import { IngredientType } from '../models/Ingredient';
 import { IngredientsService } from '../services/ingredients.service';
 
@@ -14,26 +16,24 @@ export class HomeComponent implements OnInit {
 
   constructor(private ingredientService:IngredientsService,private route:Router) { }
   
-   Ingredients:IngredientType[]=[];
-
+   Ingredients!:Observable<any>;
     //Ingredients:any;
-  selectedIngredient:number[]=[];
+  selectedIngredient:IngredientType[]=[];
+  selectedIngSize=0;
 
   ngOnInit(): void {
    this.Ingredients = this.ingredientService.getIngredients();
-   //console.log(this.Ingredients);
+   console.log(this.Ingredients);
+  }
+  //bgColor!:string;
+
+  selectIngredient(Ing:IngredientType){
+
+        this.selectedIngredient.push(Ing);
+        this.selectedIngSize=this.selectedIngredient.length;
   }
 
-  bgcolor="black";
-  selectIngredient(id:number){
-     this.Ingredients.map((item:any)=>{
-        if(item.id===id){
-          item.isSelected=!item.isSelected;
-          item.isSelected? this.selectedIngredient.push(item.id): this.selectedIngredient.pop();
-        }
-     });
-    
-  }
+
 
   quantity=0;
   setQuantity(val:string){

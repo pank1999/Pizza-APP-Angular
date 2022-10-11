@@ -8,11 +8,11 @@
     </div>
 </div>
 <div class="Crad-container" >
-    <mat-card *ngFor="let item of Ingredients" class="card-item"  (click)="selectIngredient(item.id)" >
+    <mat-card *ngFor="let item of Ingredients | async" class="card-item" (click)="selectIngredient(item)"  >
         <img  src={{item.img}} alt="" >
         <p>{{item.name}}</p>
         <p>RS-{{item.price}}</p>
-        <p><mat-icon  [style.color]="item.isSelected?'green':'black'" style="font-size: 30px; height: 40px;width: 50px;" >add_circle</mat-icon></p>
+        <p><mat-icon onclick="addIng()" >add_circle</mat-icon></p>
         
         <!-- <div class="quantity" >
             <mat-icon (click)="setQuantity('sub')" style="cursor: pointer;" >remove_circle</mat-icon> <span>{{quantity}}</span> <mat-icon (click)="setQuantity('add')" style="cursor: pointer;" >add_circle</mat-icon>
@@ -21,5 +21,5 @@
     </mat-card>
 </div>
 <div class="AddToCartBtnContainer">
-    <button class="addToCartBtn" (click)="AddToCart()" >Add Pizza to Cart</button>
+    <button class="addToCartBtn" (click)="AddToCart()" >Add Pizza to Cart <span> ( {{selectedIngSize}} )</span> </button>
 </div>

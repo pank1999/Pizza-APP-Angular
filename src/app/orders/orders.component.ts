@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
 import {orderType} from "../models/order";
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 
 @Component({
@@ -15,9 +15,10 @@ export class OrdersComponent implements OnInit {
   constructor(private orderService:OrderService,private route: ActivatedRoute) { }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','action'];
-  dataSource:orderType[]=[];
+  dataSource$!:Observable<any>;
+
   ngOnInit(): void {
-    this.dataSource=this.orderService.getAllOrders(3);
+    this.dataSource$=this.orderService.getAllOrders(2);
 
   }
 

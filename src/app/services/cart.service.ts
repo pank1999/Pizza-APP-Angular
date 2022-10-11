@@ -21,29 +21,29 @@ export interface pizzaType{
 })
 export class CartService {
 
-  Base_url="localhost:3000/api/cart";
+  Base_url="http://localhost:3000/cart";
   constructor(private http:HttpClient) { }
-  cartData:pizzaType[]= [
-    {
-     id:1,
-     TotalPrice:200,
-     IngQuantity:3,
-     IngArray:[
-      {name:'Ing1',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-      {name:'Ing2',price:100,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-      {name:'Ing3',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-    ]
-    },
-    {
-      id:2,
-      TotalPrice:100,
-      IngQuantity:2,
-      IngArray:[
-       {name:'Ing1',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-       {name:'Ing2',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-     ]
-     }
-  ]
+  // cartData:pizzaType[]= [
+  //   {
+  //    id:1,
+  //    TotalPrice:200,
+  //    IngQuantity:3,
+  //    IngArray:[
+  //     {name:'Ing1',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
+  //     {name:'Ing2',price:100,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
+  //     {name:'Ing3',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
+  //   ]
+  //   },
+  //   {
+  //     id:2,
+  //     TotalPrice:100,
+  //     IngQuantity:2,
+  //     IngArray:[
+  //      {name:'Ing1',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
+  //      {name:'Ing2',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
+  //    ]
+  //    }
+  // ]
   
   //adding pizza to user cart 
   AddToCart(pizza:any){
@@ -52,8 +52,8 @@ export class CartService {
    
   //get user cart
   getUserCart(userId:any){
-      //this.http.get(`${this.Base_url}/${userId}`);
-      return this.cartData;
+       return this.http.get(`${this.Base_url}/${userId}`);
+     // return this.cartData;
   }
 
 }
