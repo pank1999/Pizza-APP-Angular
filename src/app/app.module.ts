@@ -17,6 +17,11 @@ import {MatBadgeModule} from "@angular/material/badge"
 import { CartComponent } from './cart/cart.component';
 import { OrdersComponent } from './orders/orders.component'
 import { MatButtonModule } from '@angular/material/button';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './store/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +42,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatTableModule,
     MatBadgeModule,
-    MatButtonModule
+    MatButtonModule,
+    StoreModule.forRoot(rootReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

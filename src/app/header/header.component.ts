@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable, toArray } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, of, toArray } from 'rxjs';
 import { CartService } from '../services/cart.service';
+
+
 
 @Component({
   selector: 'app-header',
@@ -9,7 +12,7 @@ import { CartService } from '../services/cart.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private cartService:CartService) { }
+  constructor(private cartService:CartService,private store:Store) { }
   @Input() user=false;
   @Output() loggedOutUser=new EventEmitter<boolean>();
 
@@ -17,6 +20,7 @@ export class HeaderComponent implements OnInit {
   size!:number;
   ngOnInit(): void {
       this.cartSize$=this.cartService.getUserCart(1);
+
   }
 
   logout(){
