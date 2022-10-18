@@ -1,51 +1,89 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable, toArray } from 'rxjs';
 import { IngredientType } from '../models/Ingredient';
+import { CartService } from '../services/cart.service';
 import { IngredientsService } from '../services/ingredients.service';
+import { AddPizzaAction, RemovePizzaAction } from '../store/actions/pizza.action';
+import { getIngs, getPizza, get_User, RootReducerState } from '../store/reducers';
+
 
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
+export class HomeComponent implements OnInit{
+  constructor(
+    private ingredientService: IngredientsService,
+    private route: Router,
+    private store: Store<RootReducerState>,
+    private cartService :CartService
+  ) {}
 
-export class HomeComponent implements OnInit {
-
-  constructor(private ingredientService:IngredientsService,private route:Router) { }
-  
-   Ingredients:IngredientType[]=[];
-
-    //Ingredients:any;
-  selectedIngredient:number[]=[];
+  Ingredients$!: Observable<any>;
+  Ingredients:any;
+  selectedIngSize = 0;
+  Ings$!:Observable<any>;
+  userLoggedIn!:any;
 
   ngOnInit(): void {
-   this.Ingredients = this.ingredientService.getIngredients();
-   //console.log(this.Ingredients);
+
+    this.Ingredients$ = this.ingredientService.getIngredients();
+
+    this.store.select(getIngs).subscribe(res=>{
+        this.Ingredients=res
+    });
+      
+     //getting userId
+     this.store.select(get_User).subscribe(res=>{
+      this.userLoggedIn=res;
+     })
   }
 
-  bgcolor="black";
-  selectIngredient(id:number){
-     this.Ingredients.map((item:any)=>{
-        if(item.id===id){
-          item.isSelected=!item.isSelected;
-          item.isSelected? this.selectedIngredient.push(item.id): this.selectedIngredient.pop();
-        }
+  quantity = 0;
+  PizzaTotalPrice=0;
+  IngArray!:any;
+  //helper func for calculating total price and Ing Quantity
+  helper(){
+    const pizza = this.store.select(getPizza);
+
+     pizza.subscribe(res=>{
+      this.IngArray=res;
      });
-    
+
+    pizza.subscribe(res=>{
+         res.forEach(ing=>{
+            console.log(this.PizzaTotalPrice);
+            this.PizzaTotalPrice+=ing.price;
+         })
+    })
   }
 
-  quantity=0;
-  setQuantity(val:string){
-       if(val==="add"){
-          this.quantity+=1;
-       }
-       else{
-          this.quantity-=1;
-       }
+  AddToCart() {
+    this.helper();
+    const data={
+      userId:this.userLoggedIn.id,
+      TotalPrice:this.PizzaTotalPrice,
+      IngQuantity:this.quantity,
+      IngArray:this.IngArray
+    }
+     console.log("this data will be added to cart",data);
+    if(this.userLoggedIn && this.quantity>0){
+      this.cartService.AddToCartPost(data)
+      this.route.navigate(['/cart']);
+    } 
   }
 
-  AddToCart(){
-      this.route.navigate(["/cart",this.selectedIngredient]);
+  addIng(ing:IngredientType){
+     this.store.dispatch(new AddPizzaAction({data:ing}))
+     this.quantity += 1;
+  }
+
+  remove(id:number){
+     this.store.dispatch(new RemovePizzaAction({id}));
+     this.quantity -= 1;
   }
 }

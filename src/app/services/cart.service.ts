@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { Store } from '@ngrx/store';
+import { RootReducerState } from '../store/reducers';
+import { CartSuccessAction } from '../store/actions/cart.action';
+import { Observable } from 'rxjs';
+import { EmptyPizzaAction } from '../store/actions/pizza.action';
 
 
 export interface IngredientType{
   name:string,
   price:number,
-  img:string
+  img:string,
+  isSelected:boolean
 }
 
 export interface pizzaType{
-  id:number,
+  userId:number,
   TotalPrice:number,
   IngQuantity:number,
   IngArray:IngredientType[]
@@ -21,39 +27,32 @@ export interface pizzaType{
 })
 export class CartService {
 
-  Base_url="localhost:3000/api/cart";
-  constructor(private http:HttpClient) { }
-  cartData:pizzaType[]= [
-    {
-     id:1,
-     TotalPrice:200,
-     IngQuantity:3,
-     IngArray:[
-      {name:'Ing1',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-      {name:'Ing2',price:100,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-      {name:'Ing3',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-    ]
-    },
-    {
-      id:2,
-      TotalPrice:100,
-      IngQuantity:2,
-      IngArray:[
-       {name:'Ing1',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-       {name:'Ing2',price:50,img:"https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000"},
-     ]
-     }
-  ]
-  
+  Base_url="http://localhost:3000/cart";
+
+  constructor(private http:HttpClient,private store:Store<RootReducerState>) { }
+  userCart$!:Observable<any>;
   //adding pizza to user cart 
-  AddToCart(pizza:any){
-     this.http.post(this.Base_url,pizza);
+  AddToCartPost(pizza:pizzaType){
+     //console.log("in add to cart function ",pizza);
+     this.store.dispatch(new EmptyPizzaAction());
+     return this.http.post("http://localhost:3000/cart",pizza).subscribe();
   }
    
   //get user cart
   getUserCart(userId:any){
-      //this.http.get(`${this.Base_url}/${userId}`);
-      return this.cartData;
+        this.userCart$=this.http.get(`${this.Base_url}/${userId}`);
+        this.userCart$.subscribe(res=>{
+         // console.log(res);
+          this.store.dispatch(new CartSuccessAction({cart:res}))
+        });
+        return this.userCart$
+  }
+
+  //empty user cart
+  emptyUserCart(userId:number){
+      console.log("empoty user cart method call");
+    return this.http.delete(`${this.Base_url}/${userId}`).subscribe();
+
   }
 
 }

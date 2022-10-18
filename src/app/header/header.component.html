@@ -3,21 +3,21 @@
         <img src="https://img.freepik.com/premium-vector/pizza-logo-design_9845-319.jpg?w=2000" alt="logo">
         <span>Pizza App</span>
     </div>
-    <ul *ngIf="!user;else elseBlock" >
+    <ul *ngIf="!userLoggedIn ;else elseBlock" >
         <li><a  [routerLink]="['']" routerLinkActive="active"  >Home</a></li>
         <li><a routerLink="/login"  >login</a></li>
         <li><a routerLink="/register" routerLinkActive="active" >register</a></li>
-       
     </ul>
     <ng-template #elseBlock >
         <ul>
             <li><a  routerLink="" routerLinkActive="active"  >Home</a></li>
             <li> 
                 <a routerLink="/cart" style="margin-top:10px ;">
-                      <mat-icon matBadge={{cartSize}} matBadgeColor="primary">shopping_cart</mat-icon>
+                      <mat-icon matBadge={{size}} matBadgeColor="primary">shopping_cart</mat-icon>
                  </a>
             </li>   
             <li> <button class="logout" (click)="logout()" >Logout</button> </li>
+           
         </ul>
     </ng-template>
    

@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { elementAt, Observable, toArray } from 'rxjs';
+import { orderType } from '../models/order';
+import { useerType } from '../models/user';
 import { CartService } from '../services/cart.service';
+import { OrderService } from '../services/order.service';
+import { CartStartAction } from '../store/actions/cart.action';
+import { getUserCart, getUserCartStart, get_User, RootReducerState } from '../store/reducers';
 
 export interface IngredientType{
   name:string,
@@ -22,19 +29,49 @@ export interface pizzaType{
 })
 export class CartComponent implements OnInit {
 
-  constructor(private cartService:CartService,private router: Router){ }
+  constructor(private cartService:CartService,private router: Router , private store:Store<RootReducerState>,private orderService:OrderService){}
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','action'];
-  dataSource:pizzaType[]=[];
-
+  dataSource$!:any;
+  totalPrice:number=0;
+  userLoggedIn!:any;
+ 
   ngOnInit(): void {
-    this.dataSource=this.cartService.getUserCart(2);
-    console.log(this.dataSource);
+
+    this.store.dispatch(new CartStartAction());
+
+    //getting userId
+    this.store.select(get_User).subscribe(res=>{
+       this.userLoggedIn=res;
+    })
+    
+    this.cartService.getUserCart(this.userLoggedIn.id);
+    
+    this.store.select(getUserCart).subscribe(res=>{
+      this.dataSource$=res;
+    });
+    this.dataSource$.forEach((element:any) => {
+         element.IngArray.forEach( (ing:any) => {
+             this.totalPrice+=ing.price;
+          });
+    });
+    
+     
+
   }
 
   checkout(){
       console.log("checkout called");
-      this.router.navigate(["/orders",{oderItem:2}]);
+      const orderData={
+        userId:this.userLoggedIn.id,
+        totalPrice:this.totalPrice,
+        items:this.dataSource$,
+        status:'OrderPlaced'
+      }
+      
+      this.orderService.addOrder(orderData);
+      console.log("order data",orderData);
+      this.router.navigate(["/orders"]);
   }
 
 }

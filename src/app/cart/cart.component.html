@@ -4,15 +4,16 @@
 </div>
 <div class="container" >
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource$" class="mat-elevation-z8">
   
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
     
       <!-- Position Column -->
+      
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef style="text-align:center;" > ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <td mat-cell *matCellDef="let element "> {{ element.id }} </td>
       </ng-container>
     
       <!-- Name Column -->
@@ -53,14 +54,15 @@
         <p mat-card-title >Order Summary</p>
          <div>
              <p>Items</p>
-              <ul>
-                 <li>Pizza 1 (Ing1 , Ing2)</li>
-                 <li>Pizza 2 (Ing3 , Ing2)</li>
+              <ul *ngFor="let pizza of dataSource$ ">
+                 <li *ngFor="let ing of pizza.IngArray" >
+                      <span> {{ing.name}} </span>
+                 </li>
               </ul> 
          </div>
          <div>
              <p>Total Price</p>
-             <p>RS - 1200</p>
+             <p>RS - {{totalPrice}} </p>
          </div>
          <div>
             <button (click)="checkout()"  >Checkout</button>
