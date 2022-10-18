@@ -12,10 +12,10 @@
         <img  src={{item.img}} alt="" >
         <p>{{item.name}}</p>
         <p>RS-{{item.price}}</p>
-        <p>
+        <p class="icon-card" >
            <mat-icon (click)="addIng(item)" >add_circle</mat-icon>
-
-           <mat-icon (click)="remove(item.id)"  >delete_outline</mat-icon>
+           <!-- <mat-icon class="select-icon"  [style.display]="displayIcon" >check_circle</mat-icon> -->
+           <mat-icon (click)="remove(item.id)" >delete_outline</mat-icon>
         </p>
        
     </mat-card>

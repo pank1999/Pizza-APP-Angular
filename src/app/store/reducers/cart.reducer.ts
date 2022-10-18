@@ -1,5 +1,5 @@
 import { Action } from "../actions"
-import { CART_FAIL, CART_START, CART_SUCCESS, EMPTY_CART } from "../actions/cart.action"
+import { CART_FAIL, CART_START, CART_SUCCESS, DELETE_PIZZA, EMPTY_CART } from "../actions/cart.action"
 
 
 export interface cartReducerState{
@@ -32,6 +32,10 @@ export function cartReducer(state=initialState,action:Action):cartReducerState{
         case EMPTY_CART:{
             return {...state, cart:null}
         }
+        case DELETE_PIZZA:{
+            const updatedCart=state.cart.filter((ele:any)=>ele.id !== action.payload.id);
+             return {...state,...{cart:updatedCart}};
+        }
         default : {
            return state;
         }
@@ -39,13 +43,14 @@ export function cartReducer(state=initialState,action:Action):cartReducerState{
 }
 
 
-// selectors
+// selectorss
 
 export const getCartSuccess=(state:cartReducerState)=>state.loaded;
 export const getCartStart=(state:cartReducerState)=>state.loading;
 export const getCartFail=(state:cartReducerState)=>state.fail;
 export const getCart=(state:cartReducerState)=>state.cart;
 export const GetEmptyCart=(state:cartReducerState)=>state.cart;
+export const DeletePizza=(state:cartReducerState)=>state.cart;
 
 
 

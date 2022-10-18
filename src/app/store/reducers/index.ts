@@ -1,5 +1,5 @@
 import { ActionReducerMap, createSelector } from "@ngrx/store";
-import { cartReducer, cartReducerState, getCart, getCartFail, getCartStart, getCartSuccess, GetEmptyCart } from "./cart.reducer";
+import { cartReducer, cartReducerState, DeletePizza, getCart, getCartFail, getCartStart, getCartSuccess, GetEmptyCart } from "./cart.reducer";
 import { getIngredients, getIngredientStart, getIngredientSuccess, IngredientReducerState, IngredinetReducer } from "./ingredinet.reducer";
 import { AddUserOrder, GetUserOrder, OrderReducer, OrderReducerState } from "./order.reducer";
 import { GetEmptyPizza, GetPizzaIngredient, PizzaReducer, PizzaReducerState } from "./pizza.reducer";
@@ -65,6 +65,7 @@ export const getUserCartStart=createSelector(getCartState,getCartStart);
 export const getUserCartSuccess=createSelector(getCartState,getCartSuccess);
 export const getUserCartFail=createSelector(getCartState,getCartFail);
 export const EmptyCart=createSelector(getCartState,GetEmptyCart);
+export const DeleteSinglePizza=createSelector(getCartState,DeletePizza);
 
 
 //pizza selector

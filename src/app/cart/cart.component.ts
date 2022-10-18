@@ -74,4 +74,10 @@ export class CartComponent implements OnInit {
       this.router.navigate(["/orders"]);
   }
 
+
+  deleteCartPizza(pizzaId:number){
+    
+       return this.cartService.deleteSinglePizza(this.userLoggedIn.id,pizzaId);
+  }
+
 }

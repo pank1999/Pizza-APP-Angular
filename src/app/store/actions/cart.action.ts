@@ -2,6 +2,7 @@ export  const CART_START='cart start';
 export  const CART_SUCCESS='cart success';
 export const CART_FAIL='cart fail';
 export const EMPTY_CART='empty cart';
+export const DELETE_PIZZA='delete single pizza';
 
 export class CartStartAction{
     readonly type=CART_START;
@@ -18,4 +19,9 @@ export class CartFailAction{
 
 export class EmptyCartAction{
     readonly type=EMPTY_CART;
+}
+
+export class DeletePizzaAction{
+    readonly type=EMPTY_CART;
+    constructor(public payload?:{id:number}){}
 }

@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit{
   quantity = 0;
   PizzaTotalPrice=0;
   IngArray!:any;
+  displayIcon="none";
   //helper func for calculating total price and Ing Quantity
   helper(){
     const pizza = this.store.select(getPizza);
@@ -80,10 +81,13 @@ export class HomeComponent implements OnInit{
   addIng(ing:IngredientType){
      this.store.dispatch(new AddPizzaAction({data:ing}))
      this.quantity += 1;
+     this.displayIcon="block"
+
   }
 
   remove(id:number){
      this.store.dispatch(new RemovePizzaAction({id}));
      this.quantity -= 1;
+     this.displayIcon="none";
   }
 }

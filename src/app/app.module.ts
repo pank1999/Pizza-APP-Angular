@@ -21,6 +21,7 @@ import { StoreModule } from '@ngrx/store';
 import { rootReducer } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { environment } from '../environments/environment';
     HeaderComponent,
     HomeComponent,
     CartComponent,
-    OrdersComponent
+    OrdersComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

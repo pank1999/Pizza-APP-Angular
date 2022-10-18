@@ -75,3 +75,12 @@
     padding:20px 50px;
     cursor: pointer;
 }
+
+.icon-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.select-icon{
+    color: green;
+}

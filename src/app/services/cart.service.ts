@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Store } from '@ngrx/store';
 import { RootReducerState } from '../store/reducers';
-import { CartSuccessAction } from '../store/actions/cart.action';
+import { CartSuccessAction, DeletePizzaAction } from '../store/actions/cart.action';
 import { Observable } from 'rxjs';
 import { EmptyPizzaAction } from '../store/actions/pizza.action';
 
@@ -50,9 +50,15 @@ export class CartService {
 
   //empty user cart
   emptyUserCart(userId:number){
-      console.log("empoty user cart method call");
+      //console.log("empoty user cart method call");
     return this.http.delete(`${this.Base_url}/${userId}`).subscribe();
 
+  }
+
+  deleteSinglePizza(userId:number,cartId:number){
+       console.log("delete single pizza from method call");
+       this.store.dispatch(new DeletePizzaAction({id:cartId}));
+       return this.http.delete(`${this.Base_url}?userId=${userId}&cartId=${cartId}`).subscribe();
   }
 
 }

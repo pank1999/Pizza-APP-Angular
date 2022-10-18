@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component'
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule ,
     MatCardModule,
     MatIconModule,
-    MatButtonModule   
+    MatButtonModule,
+    AppRoutingModule   
   ],
   exports:[
     LoginComponent,
