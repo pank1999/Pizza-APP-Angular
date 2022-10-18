@@ -33,16 +33,10 @@ export function IngredinetReducer(state=initialState,action:Action):IngredientRe
 
 //selector
 
-export const getIngredientStart=(state:IngredientReducerState)=>{
-    state.loading;
-}
+export const getIngredientStart=(state:IngredientReducerState)=>state.loading;
 
 
-export const getIngredientSuccess=(state:IngredientReducerState)=>{
-    state.loaded
-}
+export const getIngredientSuccess=(state:IngredientReducerState)=>state.loaded;
 
-export const getIngredients=(state:IngredientReducerState)=>{
-   state.ingredient;
-}
+export const getIngredients=(state:IngredientReducerState)=>state.ingredient;
 

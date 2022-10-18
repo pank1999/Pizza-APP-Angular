@@ -3,6 +3,8 @@ import { OrderService } from '../services/order.service';
 import {orderType} from "../models/order";
 import { ActivatedRoute } from '@angular/router';
 import { Observable, switchMap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { get_User, RootReducerState } from '../store/reducers';
 
 
 @Component({
@@ -12,13 +14,16 @@ import { Observable, switchMap } from 'rxjs';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor(private orderService:OrderService,private route: ActivatedRoute) { }
+  constructor(private orderService:OrderService,private route: ActivatedRoute,private store:Store<RootReducerState>) { }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','action'];
-  dataSource$!:Observable<any>;
-
+  dataSource$!:any;
+  userId!:number;
   ngOnInit(): void {
-    this.dataSource$=this.orderService.getAllOrders(2);
+     this.store.select(get_User).subscribe(res=>{
+        this.userId=res.id;
+     })
+    this.dataSource$=this.orderService.getAllOrders(this.userId);
 
   }
 

@@ -4,7 +4,7 @@
 </div>
 <div class="container" >
 
-  <table mat-table [dataSource]="dataSource$ | async" class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource$" class="mat-elevation-z8">
   
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -54,7 +54,7 @@
         <p mat-card-title >Order Summary</p>
          <div>
              <p>Items</p>
-              <ul *ngFor="let pizza of dataSource$ | async">
+              <ul *ngFor="let pizza of dataSource$ ">
                  <li *ngFor="let ing of pizza.IngArray" >
                       <span> {{ing.name}} </span>
                  </li>

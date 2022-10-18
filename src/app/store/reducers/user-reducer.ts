@@ -1,6 +1,6 @@
 import { useerType } from "src/app/models/user";
 import { Action } from "../actions";
-import { USER_LOGIN_START, USER_LOGIN_SUCCESS } from "../actions/user-action";
+import { USER_LOGIN_START, USER_LOGIN_SUCCESS, USER_LOGOUT } from "../actions/user-action";
 
 export interface UserReducerState{
     loginStart:boolean;
@@ -16,13 +16,7 @@ const initailState:UserReducerState={
    loginStart:false,
    loginSuccess:false,
    loginFail:false,
-//    user:{
-//     name: '', 
-//     mobileNumber: '',
-//     email: '', 
-//     password:''
-//    }
-    user:null
+   user:null
 }
 
 export function UserReducer(state=initailState,action:Action):UserReducerState{ 
@@ -34,6 +28,9 @@ export function UserReducer(state=initailState,action:Action):UserReducerState{
              const data=action.payload.data;
              return {...state,loginSuccess:true,loginStart:false,user:data};
         }
+        case USER_LOGOUT:{
+            return {...state,user:null};
+        }
         default :{
             return state;
         }
@@ -43,24 +40,18 @@ export function UserReducer(state=initailState,action:Action):UserReducerState{
 
 //selectors
 
-export const getLoginStart=(state:UserReducerState)=>{
-    state.loginStart;
-}
+export const getLoginStart=(state:UserReducerState)=>state.loginStart;
 
 
-export const getLoginSuccess=(state:UserReducerState)=>{
-    state.loginSuccess;
-}
+export const getLoginSuccess=(state:UserReducerState)=>state.loginSuccess;
 
 
-export const getLoginFail=(state:UserReducerState)=>{
-    state.loginFail;
-}
+export const getLoginFail=(state:UserReducerState)=>state.loginFail;
 
 
-export const getUser=(state:UserReducerState)=>{
-    state.user
-}
+export const getUser=(state:UserReducerState)=>state.user;
+
+export const userLogout=(state:UserReducerState)=>state.user;
 
 
 

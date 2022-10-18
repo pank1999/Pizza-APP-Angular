@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   getUser(data:NgForm){
     
     this.store.dispatch(new UserLoginStartAction());
-
     console.log(data.value);
     // this.userData=data.value;
     this.userService.loginUser(data.value);

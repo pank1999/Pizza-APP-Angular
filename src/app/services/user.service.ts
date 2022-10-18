@@ -26,13 +26,11 @@ export class UserService {
    
     this.http.post(`${this.Base_url}/login`,user).subscribe(data=>{
       console.log(data);
-
+      this.route.navigate([""]);
       this.store.dispatch(new UserLoginSuccessAction({data}))
      
       if(data){
         window.localStorage.setItem("email",user.email);
-        this.route.navigate(["/"]);
-
       }
     });
   }
