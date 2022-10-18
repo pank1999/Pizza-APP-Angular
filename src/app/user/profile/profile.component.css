@@ -1,0 +1,25 @@
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+.card{
+    width: 50%;
+}
+.card span{
+    color: red;
+}
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.content img{
+    border-radius: 10px;
+}
+.content p{
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
