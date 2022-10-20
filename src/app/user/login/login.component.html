@@ -3,11 +3,11 @@
     <form  #form="ngForm" (ngSubmit)="getUser(form)" >
         <div>
             <label for="">Email</label>
-            <input type="text" ngModel name="email">
+            <input type="email" required="true" ngModel name="email">
         </div>
         <div>
             <label for="">Password</label>
-            <input type="password" ngModel  name="password">
+            <input type="password" ngModel  required="true"  name="password">
         </div>
         <div>
             <p> Don't have an account ? <a routerLink="/register" >Register</a> </p>

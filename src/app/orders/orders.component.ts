@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
-import {orderType} from "../models/order";
 import { ActivatedRoute } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { get_User, RootReducerState } from '../store/reducers';
+import { get_User, RootReducerState, UserOrder } from '../store/reducers';
 
 
 @Component({
@@ -23,8 +21,16 @@ export class OrdersComponent implements OnInit {
      this.store.select(get_User).subscribe(res=>{
         this.userId=res.id;
      })
-    this.dataSource$=this.orderService.getAllOrders(this.userId);
+    
+    this.orderService.getAllOrders(this.userId);
+    this.store.select(UserOrder).subscribe(res=>{
+        this.dataSource$=res;
+    });
 
+  }
+
+  deleteOrder(id:number){
+    this.orderService.removeOrder(this.userId,id);
   }
 
 }

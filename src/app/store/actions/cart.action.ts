@@ -22,6 +22,6 @@ export class EmptyCartAction{
 }
 
 export class DeletePizzaAction{
-    readonly type=EMPTY_CART;
+    readonly type=DELETE_PIZZA;
     constructor(public payload?:{id:number}){}
 }

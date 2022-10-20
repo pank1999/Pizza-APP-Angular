@@ -21,7 +21,6 @@ export class RegisterComponent implements OnInit {
   }
 
   getData(data:any){
-      console.log(data.value);
       this.userRegistrationData=data.value;
       this.userService.addUser(this.userRegistrationData);
   }

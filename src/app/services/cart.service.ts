@@ -33,7 +33,6 @@ export class CartService {
   userCart$!:Observable<any>;
   //adding pizza to user cart 
   AddToCartPost(pizza:pizzaType){
-     //console.log("in add to cart function ",pizza);
      this.store.dispatch(new EmptyPizzaAction());
      return this.http.post("http://localhost:3000/cart",pizza).subscribe();
   }
@@ -42,7 +41,6 @@ export class CartService {
   getUserCart(userId:any){
         this.userCart$=this.http.get(`${this.Base_url}/${userId}`);
         this.userCart$.subscribe(res=>{
-         // console.log(res);
           this.store.dispatch(new CartSuccessAction({cart:res}))
         });
         return this.userCart$
@@ -50,13 +48,11 @@ export class CartService {
 
   //empty user cart
   emptyUserCart(userId:number){
-      //console.log("empoty user cart method call");
     return this.http.delete(`${this.Base_url}/${userId}`).subscribe();
 
   }
 
   deleteSinglePizza(userId:number,cartId:number){
-       console.log("delete single pizza from method call");
        this.store.dispatch(new DeletePizzaAction({id:cartId}));
        return this.http.delete(`${this.Base_url}?userId=${userId}&cartId=${cartId}`).subscribe();
   }

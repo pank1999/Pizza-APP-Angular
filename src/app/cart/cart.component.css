@@ -2,6 +2,7 @@ table{
     flex: 2;
     width:100%;
     border-radius: 10px;
+   
 }
 td,th{
     text-align: center;
@@ -36,6 +37,7 @@ h2{
     display:flex;
     justify-content: space-between;
     padding:0px 30px;
+    margin-bottom: 310px;
     
 }
 .checkout-card{

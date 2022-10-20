@@ -87,7 +87,9 @@ export class HomeComponent implements OnInit{
 
   remove(id:number){
      this.store.dispatch(new RemovePizzaAction({id}));
-     this.quantity -= 1;
+     if(this.quantity>0){
+       this.quantity -= 1;
+     }
      this.displayIcon="none";
   }
 }

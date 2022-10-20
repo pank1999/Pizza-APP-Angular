@@ -1,7 +1,7 @@
 import { ActionReducerMap, createSelector } from "@ngrx/store";
 import { cartReducer, cartReducerState, DeletePizza, getCart, getCartFail, getCartStart, getCartSuccess, GetEmptyCart } from "./cart.reducer";
 import { getIngredients, getIngredientStart, getIngredientSuccess, IngredientReducerState, IngredinetReducer } from "./ingredinet.reducer";
-import { AddUserOrder, GetUserOrder, OrderReducer, OrderReducerState } from "./order.reducer";
+import { AddUserOrder, GetUserOrder, OrderReducer, OrderReducerState, RemoveUserOrder } from "./order.reducer";
 import { GetEmptyPizza, GetPizzaIngredient, PizzaReducer, PizzaReducerState } from "./pizza.reducer";
 import { getLoginFail, getLoginStart, getLoginSuccess, getUser, userLogout, UserReducer, UserReducerState } from "./user-reducer";
 
@@ -76,3 +76,4 @@ export const EmptyPizza=createSelector(getPizzaState,GetEmptyPizza);
 //order selector 
 export const UserOrder=createSelector(getOrderState,GetUserOrder);
 export const AddUserOrderStore=createSelector(getOrderState,AddUserOrder);
+export const RemoveOrder=createSelector(getOrderState,RemoveUserOrder);

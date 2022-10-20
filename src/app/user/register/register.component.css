@@ -10,6 +10,7 @@
     box-shadow: 0px 0px 3px 3px rgb(223, 223, 223);
     border-radius: 10px;
     width: 30%;
+    margin-bottom: 167px;
 }
 .login form div{
     display: flex;

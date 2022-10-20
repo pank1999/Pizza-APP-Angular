@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { elementAt, Observable, toArray } from 'rxjs';
-import { orderType } from '../models/order';
-import { useerType } from '../models/user';
+
 import { CartService } from '../services/cart.service';
 import { OrderService } from '../services/order.service';
 import { CartStartAction } from '../store/actions/cart.action';
@@ -27,7 +25,7 @@ export interface pizzaType{
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit{
 
   constructor(private cartService:CartService,private router: Router , private store:Store<RootReducerState>,private orderService:OrderService){}
 
@@ -35,7 +33,7 @@ export class CartComponent implements OnInit {
   dataSource$!:any;
   totalPrice:number=0;
   userLoggedIn!:any;
- 
+  
   ngOnInit(): void {
 
     this.store.dispatch(new CartStartAction());
@@ -50,18 +48,17 @@ export class CartComponent implements OnInit {
     this.store.select(getUserCart).subscribe(res=>{
       this.dataSource$=res;
     });
-    this.dataSource$.forEach((element:any) => {
-         element.IngArray.forEach( (ing:any) => {
-             this.totalPrice+=ing.price;
-          });
+
+    this.dataSource$?.forEach((element:any) => {
+      element.IngArray?.forEach( (ing:any) => {
+          this.totalPrice+=ing.price;
+       });
     });
-    
      
 
   }
 
   checkout(){
-      console.log("checkout called");
       const orderData={
         userId:this.userLoggedIn.id,
         totalPrice:this.totalPrice,
@@ -70,13 +67,11 @@ export class CartComponent implements OnInit {
       }
       
       this.orderService.addOrder(orderData);
-      console.log("order data",orderData);
       this.router.navigate(["/orders"]);
   }
 
 
   deleteCartPizza(pizzaId:number){
-    
        return this.cartService.deleteSinglePizza(this.userLoggedIn.id,pizzaId);
   }
 

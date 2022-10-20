@@ -12,11 +12,6 @@ import { UserLoginStartAction } from 'src/app/store/actions/user-action';
 export class LoginComponent implements OnInit {
 
   constructor(private userService:UserService, private store:Store) { }
-  // userData:{email:string,password:string}={
-  //   email:'',
-  //   password:''
-  // };
-
 
   ngOnInit(): void {
   }
@@ -24,8 +19,6 @@ export class LoginComponent implements OnInit {
   getUser(data:NgForm){
     
     this.store.dispatch(new UserLoginStartAction());
-    console.log(data.value);
-    // this.userData=data.value;
     this.userService.loginUser(data.value);
   }
 

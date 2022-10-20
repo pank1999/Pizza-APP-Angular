@@ -3,25 +3,25 @@
     <form  #form="ngForm" (ngSubmit)="getData(form)" >
         <div>
             <label for="">Name</label>
-            <input type="text" ngModel name="name">
+            <input type="text" ngModel required="true" name="name">
         </div>
         <div>
             <label for="">Mobile Number</label>
-            <input type="string" ngModel name="mobileNumber">
+            <input type="text" ngModel required="true" name="mobileNumber">
         </div>
         <div>
             <label for="">Email</label>
-            <input type="text" ngModel name="email">
+            <input type="email" ngModel  required="true" name="email">
         </div>
         <div>
             <label for="">Password</label>
-            <input type="password" ngModel  name="password">
+            <input type="password" required="true" ngModel  name="password">
         </div>
         <div>
             <p>Already have an account ? <a routerLink="/login" >Login</a> </p>
         </div>
         <div>
-            <button >Submit</button>
+            <button type="submit" >Submit</button>
         </div>
     </form>
 </div>
